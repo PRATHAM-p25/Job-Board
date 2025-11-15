@@ -1,5 +1,3 @@
-//'mongodb+srv://aegon2528_db_user:aegon2528@cluster0.bvicjpy.mongodb.net/';
-
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
@@ -33,7 +31,6 @@ function verifyToken(req, res, next) {
   const token = auth.split(" ")[1];
   try {
     const payload = jwt.verify(token, JWT_SECRET);
-    // normalize id
     if (payload._id && !payload.id) payload.id = payload._id;
     req.user = payload;
     next();
@@ -164,7 +161,7 @@ app.post("/api/jobs", verifyToken, verifyAdmin, async (req, res) => {
       title: String(title).trim(),
       description: String(description).trim(),
       skills: skillsArray,
-      postedBy: req.user.id // admin id from token
+      postedBy: req.user.id 
     });
 
     await job.save();
@@ -201,9 +198,6 @@ app.post("/api/jobs/:id/apply", async (req, res) => {
   }
 });
 
-/* Admin CRUD (owner enforced) */
-
-/* GET single job (with count) */
 app.get("/api/jobs/:id", async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -219,7 +213,6 @@ app.get("/api/jobs/:id", async (req, res) => {
   }
 });
 
-/* PUT update job - admin + owner */
 app.put("/api/jobs/:id", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -250,7 +243,6 @@ app.put("/api/jobs/:id", verifyToken, verifyAdmin, async (req, res) => {
   }
 });
 
-/* DELETE job - admin + owner */
 app.delete("/api/jobs/:id", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -270,7 +262,6 @@ app.delete("/api/jobs/:id", verifyToken, verifyAdmin, async (req, res) => {
   }
 });
 
-/* GET applications for job (admin owner only) */
 app.get("/api/jobs/:id/applications", verifyToken, verifyAdmin, async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -289,7 +280,6 @@ app.get("/api/jobs/:id/applications", verifyToken, verifyAdmin, async (req, res)
   }
 });
 
-/* Start server */
 mongoose.connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("MongoDB connected");
