@@ -1,7 +1,3 @@
-/**
- * Mongoose Schema for Admin Users (ES Module).
- * Handles user registration, login, and password hashing using bcrypt.
- */
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
 
@@ -24,13 +20,8 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    /*role: {
-        type: String,
-        default: 'admin'
-    }*/
 });
 
-// Middleware to hash the password BEFORE saving the Admin document
 AdminSchema.pre('save', async function(next) {
     if (!this.isModified('password')) {
         return next();
@@ -44,10 +35,10 @@ AdminSchema.pre('save', async function(next) {
     }
 });
 
-// Method to compare the input password with the stored hashed password
 AdminSchema.methods.comparePassword = async function(candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
 
 const Admin = mongoose.model('Admin', AdminSchema);
+
 export default Admin;
