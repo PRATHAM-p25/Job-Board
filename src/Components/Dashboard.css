@@ -1,5 +1,3 @@
-/* Dashboard.css - vanilla CSS (blue + green accents only) */
-
 :root{
   --blue-600: #2563eb;
   --blue-500: #3b82f6;
@@ -15,7 +13,6 @@
 * { box-sizing: border-box; }
 body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background: var(--bg); }
 
-/* Header */
 .dashboard-header {
   position: fixed;
   top: 0;
@@ -38,31 +35,27 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
 
 .role { color:var(--blue-500); font-weight:600; margin-left:6px; }
 
-/* Header buttons */
 .header-actions { display:flex; gap:10px; align-items:center; }
 .btn { padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:600; }
 .btn-outline { background:transparent; border:1px solid rgba(37,99,235,0.12); color:var(--blue-600); }
 .btn-logout { background:var(--green-600); color:white; }
 .btn-logout:hover { opacity:0.95; }
 
-/* Main layout with top padding to account for fixed header */
 .dashboard-main {
   display: grid;
   grid-template-columns: 320px 1fr;
   gap: 22px;
   max-width: 1100px;
-  margin: 96px auto 48px; /* top margin to clear header */
+  margin: 96px auto 48px; 
   padding: 0 18px;
 }
 
-/* For smaller screens */
 @media (max-width: 900px) {
   .dashboard-main { grid-template-columns: 1fr; margin-top: 88px; }
   .admin-panel { order: 2; }
   .jobs-area { order: 1; }
 }
 
-/* Cards */
 .card {
   background: var(--card-bg);
   border-radius: calc(var(--radius) - 2px);
@@ -70,11 +63,9 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
   padding: 16px;
 }
 
-/* Admin panel card */
-.admin-panel .admin-card { position: sticky; top: 92px; } /* stays visible while scrolling */
+.admin-panel .admin-card { position: sticky; top: 92px; } 
 .card-title { margin: 0 0 10px; font-size:16px; color:var(--blue-600); }
 
-/* Form fields */
 .input, .textarea {
   width: 100%;
   padding: 10px 12px;
@@ -89,7 +80,6 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
 
 .textarea { min-height: 90px; resize: vertical; }
 
-/* Buttons */
 .btn-primary {
   width: 100%;
   background: var(--blue-600);
@@ -102,18 +92,15 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
 }
 .btn-primary:hover { background: var(--blue-500); }
 
-/* Jobs area */
 .jobs-area { min-height: 200px; }
 .section-title { margin: 0 0 12px; color:var(--blue-600); }
 
-/* Grid of job cards */
 .jobs-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
 }
 
-/* job card */
 .job-card {
   background: linear-gradient(180deg, #fff, #fff);
   border-radius: 12px;
@@ -131,13 +118,10 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
 
 .job-meta .skills { color:var(--muted); font-size:13px; }
 
-/* description */
 .job-desc { margin: 0; color:#111827; font-size:14px; }
 
-/* actions area */
 .job-actions { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:6px; }
 
-/* apply block */
 .apply-block { display:flex; gap:8px; align-items:center; }
 .btn-apply {
   background: var(--green-500);
@@ -151,15 +135,12 @@ body, html, #root { height: 100%; margin: 0; font-family: Inter, system-ui, -app
 .btn-apply:hover { background: var(--green-600); }
 .btn-disabled { background: #9ca3af; color: #fff; cursor: not-allowed; }
 
-/* small applications count */
 .applications-count { font-size:13px; color:var(--muted); }
 
-/* messages */
 .form-msg { margin-top: 8px; color: var(--blue-600); font-weight:600; }
 .error { color: #dc2626; }
 .center { text-align:center; color:var(--muted); }
 
-/* toast */
 .toast {
   position: fixed;
   right: 20px;
