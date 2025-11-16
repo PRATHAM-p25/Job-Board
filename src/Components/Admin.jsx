@@ -1,22 +1,13 @@
-// src/Components/Admin.jsx
 import React, { useState } from "react";
 import axios from "axios";
 
 const API_BASE = "http://localhost:5000/api";
 
-/**
- * small helper to get auth header from localStorage token
- */
 function authHeaders() {
   const token = localStorage.getItem("token");
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
-/**
- * AdminPanel - post new job UI + posting logic.
- * Props:
- *  - onJobCreated(job)   // called when server returns created job
- */
 export default function AdminPanel({ onJobCreated }) {
   const [newJob, setNewJob] = useState({ title: "", description: "", skills: "" });
   const [posting, setPosting] = useState(false);
@@ -81,13 +72,6 @@ export default function AdminPanel({ onJobCreated }) {
   );
 }
 
-/**
- * AdminActions - buttons (Edit / Delete / View Applications) for each job
- * Props:
- *  - job
- *  - onJobUpdated(job)
- *  - onJobDeleted(jobId)
- */
 export function AdminActions({ job, onJobUpdated, onJobDeleted }) {
   const jobId = job._id || job.id;
 
@@ -152,3 +136,4 @@ export function AdminActions({ job, onJobUpdated, onJobDeleted }) {
     </div>
   );
 }
+
