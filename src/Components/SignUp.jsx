@@ -7,7 +7,7 @@ const API_URL = "http://localhost:5000/api";
 export default function Signup() {
   const navigate = useNavigate();
 
-  const [role, setRole] = useState("user"); // 'user' or 'admin'
+  const [role, setRole] = useState("user"); 
   const [formData, setFormData] = useState({
     userName: "",
     email: "",
