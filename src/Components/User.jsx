@@ -1,16 +1,8 @@
-// src/Components/User.jsx
 import React, { useState } from "react";
 import axios from "axios";
 
 const API_BASE = "http://localhost:5000/api";
 
-/**
- * UserActions - per-job apply UI & logic (manages its own resume input)
- * Props:
- *  - jobId
- *  - applied (boolean)
- *  - onApplied(newCount)  // called when application succeeded; pass new count or null
- */
 export default function UserActions({ jobId, applied = false, onApplied }) {
   const [resumeLink, setResumeLink] = useState("");
   const [applying, setApplying] = useState(false);
